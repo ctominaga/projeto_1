@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
 
-from recipes.views import home
+from . import views
+
+app_name = 'recipes'
 
 urlpatterns = [
-    path('', home),
-    path('home/', home),
-
+    path('', views.home),
+    path('home/', views.home, name="home"),
+    path('recipes/<int:id>/', views.recipe, name="recipe"),
 ]
